@@ -15,7 +15,7 @@ const io = new Server(server, {
       "http://localhost:3000",
       "http://localhost:4000",
       "https://code-share-neon-chi.vercel.app",
-      "https://code-share-production-cb5a.up.railway.app",
+      "https://code-share-compiler.vercel.app/",
     ],
     methods: ["GET", "POST"],
     credentials: true,
