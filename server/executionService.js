@@ -12,10 +12,8 @@ const languageMap = {
 
 const executeCode = async (language, code, stdin = "") => {
   try {
-    // Map language to Piston language
     const pistonLanguage = languageMap[language] || "javascript";
 
-    // Format request for Piston API
     const payload = {
       language: pistonLanguage,
       version: "*",
@@ -27,15 +25,13 @@ const executeCode = async (language, code, stdin = "") => {
       stdin: stdin,
     };
 
-    // Make request to Piston API
     const response = await axios.post(`${PISTON_API_URL}/execute`, payload, {
-      timeout: 30000, // 30 seconds timeout
+      timeout: 30000, 
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    // Extract relevant data from response
     const { run, compile } = response.data;
 
     return {
