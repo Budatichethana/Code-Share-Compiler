@@ -26,7 +26,6 @@ const io = new Server(server, {
   pingInterval: 25000,
 });
 
-
 const buildPath = path.join(__dirname, "../build");
 if (fs.existsSync(buildPath)) {
   app.use(express.static(buildPath));
@@ -34,13 +33,12 @@ if (fs.existsSync(buildPath)) {
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.json());
 
-
 const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:4000",
-    "https://code-share-neon-chi.vercel.app",
-    "https://code-share-production-cb5a.up.railway.app",
+    "https://code-share-compiler.vercel.app",
+    "https://code-share-compiler-qjbd.onrender.com",
   ],
   methods: ["GET", "POST", "OPTIONS"],
   credentials: true,
@@ -50,7 +48,6 @@ app.use(cors(corsOptions));
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
-
 
 app.post("/api/execute", async (req, res) => {
   try {
@@ -73,7 +70,6 @@ app.post("/api/execute", async (req, res) => {
     });
   }
 });
-
 
 if (fs.existsSync(buildPath)) {
   app.use((req, res) => {
